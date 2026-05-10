@@ -1,0 +1,18 @@
+services:
+  timorosenbusch-de:
+    image: timorosenbusch-de:latest
+    restart: unless-stopped
+    networks:
+      - frontnet
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.timorosenbusch-de.rule=Host(`timorosenbusch.de`)"
+      - "traefik.http.routers.timorosenbusch-de.tls=true"
+      - "traefik.http.routers.timorosenbusch-de.tls.certresolver=autodns"
+      - "traefik.http.routers.timorosenbusch-de.tls.domains[0].main=timorosenbusch.de"
+      - "traefik.http.routers.timorosenbusch-de.tls.domains[0].sans=*.timorosenbusch.de"
+
+networks:
+  frontnet:
+    name: frontnet
+    external: true

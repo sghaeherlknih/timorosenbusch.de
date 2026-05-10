@@ -1,0 +1,62 @@
+/* Hide native cursor when custom cursor is active */
+body:has(.cursor) {
+  cursor: none;
+}
+
+a, button, [role="button"], .magnetic-btn {
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  will-change: transform;
+}
+
+.cursor__dot {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: var(--world-cursor-color);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* diamond shape */
+  transition: background-color var(--transition-world) var(--easing-retro);
+  will-change: transform;
+}
+
+.cursor__ring {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--world-cursor-color);
+  opacity: 0.6;
+  transition:
+    border-color var(--transition-world) var(--easing-retro),
+    width 200ms var(--easing-retro),
+    height 200ms var(--easing-retro),
+    top 200ms var(--easing-retro),
+    left 200ms var(--easing-retro);
+  will-change: transform;
+}
+
+.cursor__ring--hover {
+  top: -24px;
+  left: -24px;
+  width: 48px;
+  height: 48px;
+  opacity: 1;
+  border-color: var(--world-cursor-color);
+  box-shadow: 0 0 6px var(--world-cursor-color);
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+  .cursor { display: none; }
+  body { cursor: auto; }
+}

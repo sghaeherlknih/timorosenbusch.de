@@ -1,0 +1,113 @@
+/* ── Base ── */
+@import url('./base/reset.css');
+@import url('./base/tokens.css');
+@import url('./base/typography.css');
+
+/* ── Components ── */
+@import url('./components/cursor.css');
+@import url('./components/scanlines.css');
+@import url('./components/storyline.css');
+@import url('./components/glitch.css');
+@import url('./components/magnetic.css');
+
+/* ── Worlds ── */
+@import url('./worlds/world-1-hero.css');
+@import url('./worlds/world-2-character.css');
+@import url('./worlds/world-3-timeline.css');
+@import url('./worlds/world-4-skills.css');
+@import url('./worlds/world-5-hobbies.css');
+@import url('./worlds/world-6-projects.css');
+@import url('./worlds/world-7-contact.css');
+
+/* ── Layout ── */
+.world {
+  position: relative;
+  min-height: 100svh;
+  padding: var(--section-pad-y) var(--section-pad-x) var(--section-pad-y) calc(var(--storyline-left) + 3rem);
+}
+
+.world__inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.world-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--color-dim);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+/* Pixel border utility */
+.pixel-border {
+  border: 2px solid var(--world-accent);
+  box-shadow: var(--glow-accent);
+  image-rendering: pixelated;
+}
+
+/* World transitions on elements that consume accent tokens */
+.cursor__dot,
+.cursor__ring,
+.storyline__path,
+.world-label,
+[class*="neon-accent"] {
+  transition:
+    color var(--transition-world) var(--easing-retro),
+    background-color var(--transition-world) var(--easing-retro),
+    border-color var(--transition-world) var(--easing-retro),
+    text-shadow var(--transition-world) var(--easing-retro),
+    box-shadow var(--transition-world) var(--easing-retro),
+    stroke var(--transition-world) var(--easing-retro),
+    filter var(--transition-world) var(--easing-retro);
+}
+
+/* ── Accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--world-accent);
+  outline-offset: 3px;
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 640px) {
+  .world {
+    padding: 3rem 1.5rem 3rem 1.5rem;
+  }
+
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Reduce scanline intensity on small screens (performance) */
+  :root {
+    --scanline-opacity: 0.04;
+  }
+}
+
+/* ── Tablet ── */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .character__layout {
+    gap: 1.5rem;
+  }
+}

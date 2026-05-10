@@ -1,0 +1,108 @@
+/* ── WELT 4: BIOS / Sci-Fi HUD ── */
+.world--skills {
+  background-color: #060c14;
+}
+
+/* HUD corner brackets (decorative) */
+.hud__frame {
+  position: absolute;
+  inset: 2rem;
+  pointer-events: none;
+}
+
+.hud__corner {
+  position: absolute;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.5rem;
+  color: rgba(0, 255, 255, 0.25);
+  line-height: 1;
+}
+
+.hud__corner--tl { top: 0;    left: 0; }
+.hud__corner--tr { top: 0;    right: 0; transform: scaleX(-1); }
+.hud__corner--bl { bottom: 0; left: 0;  transform: scaleY(-1); }
+.hud__corner--br { bottom: 0; right: 0; transform: scale(-1); }
+
+/* Skills grid */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.skill-category__title {
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.skill-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.skill-item__name {
+  font-size: 0.85rem;
+  color: var(--color-white);
+}
+
+/* █ character bar */
+.skill-bar {
+  display: flex;
+  gap: 2px;
+}
+
+/* JS builds the bar from data-value (0–5 blocks) */
+.skill-bar__block {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--color-dim);
+  transition: color 0.1s, text-shadow 0.1s;
+}
+
+.skill-bar__block--filled {
+  color: var(--color-cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+/* SKILL ACQUIRED popup */
+.skill-popup {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--color-cyan);
+  box-shadow: var(--glow-cyan);
+  clip-path: inset(0 100% 0 0);
+  z-index: 500;
+  pointer-events: none;
+}
+
+.skill-popup--visible {
+  clip-path: inset(0 0% 0 0);
+  transition: clip-path 0.3s ease;
+}
+
+.skill-popup__icon {
+  color: var(--color-cyan);
+  font-size: 0.9rem;
+}
+
+.skill-popup__text {
+  font-size: 0.5rem;
+  color: var(--color-cyan);
+  letter-spacing: 0.1em;
+}

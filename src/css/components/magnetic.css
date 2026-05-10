@@ -1,0 +1,47 @@
+.magnetic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6em 1.2em;
+  border: 1px solid var(--world-accent);
+  color: var(--world-accent);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    color var(--transition-mid),
+    border-color var(--transition-mid),
+    box-shadow var(--transition-mid),
+    background-color var(--transition-mid);
+  will-change: transform;
+  /* pixel corners via box-shadow outline */
+  outline: 1px solid transparent;
+  outline-offset: 3px;
+}
+
+.magnetic-btn::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: var(--world-accent);
+  opacity: 0;
+  transition: opacity var(--transition-mid);
+  z-index: -1;
+}
+
+.magnetic-btn:hover::before,
+.magnetic-btn:focus-visible::before {
+  opacity: 0.12;
+}
+
+.magnetic-btn:hover,
+.magnetic-btn:focus-visible {
+  box-shadow: var(--glow-accent);
+  border-color: var(--world-accent);
+}
+
+.magnetic-btn:active {
+  transform: scale(0.97);
+}

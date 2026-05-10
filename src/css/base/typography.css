@@ -1,0 +1,73 @@
+/* Fonts loaded via <link> in index.html */
+
+body {
+  font-family: var(--world-font-mono);
+  font-size: 1rem;
+  color: var(--color-white);
+  background-color: var(--bg-base);
+}
+
+.font-pixel  { font-family: 'Press Start 2P', monospace; }
+.font-crt    { font-family: 'VT323', monospace; font-size: 1.4em; }
+.font-mono   { font-family: 'Share Tech Mono', monospace; }
+
+/* Heading scale */
+.heading-xl {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+}
+
+.heading-lg {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(0.85rem, 2vw, 1.4rem);
+  line-height: 1.6;
+}
+
+.heading-md {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(0.65rem, 1.2vw, 0.9rem);
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.body-crt {
+  font-family: 'VT323', monospace;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  line-height: 1.6;
+}
+
+.body-mono {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+  line-height: 1.7;
+}
+
+/* Neon text helpers */
+.neon-cyan    { color: var(--color-cyan);    text-shadow: var(--glow-cyan); }
+.neon-magenta { color: var(--color-magenta); text-shadow: var(--glow-magenta); }
+.neon-green   { color: var(--color-green);   text-shadow: var(--glow-green); }
+.neon-orange  { color: var(--color-orange);  text-shadow: var(--glow-orange); }
+.neon-amber   { color: var(--color-amber);   text-shadow: var(--glow-amber); }
+.neon-accent  { color: var(--world-accent);  text-shadow: var(--glow-accent); }
+
+/* Blinking cursor */
+.blink-cursor::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Dim label */
+.label-dim {
+  color: var(--color-dim);
+  font-size: 0.75em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,89 @@
+:root {
+  /* ── Global Palette ── */
+  --bg-base:        #0a0a0f;
+  --color-cyan:     #00ffff;
+  --color-magenta:  #ff00ff;
+  --color-green:    #39ff14;
+  --color-orange:   #ff6b00;
+  --color-amber:    #ff9500;
+  --color-gold:     #ffd700;
+  --color-white:    #e0e0e0;
+  --color-dim:      #4a4a5a;
+
+  /* ── Per-World Tokens (overridden by [data-active-world]) ── */
+  --world-accent:        var(--color-cyan);
+  --world-secondary:     var(--color-magenta);
+  --world-bg-tint:       transparent;
+  --world-font-primary:  'Press Start 2P', monospace;
+  --world-font-body:     'VT323', monospace;
+  --world-font-mono:     'Share Tech Mono', monospace;
+  --world-cursor-color:  var(--color-cyan);
+
+  /* ── Glow Shadows ── */
+  --glow-cyan:    0 0 8px #00ffff, 0 0 20px #00ffff40;
+  --glow-magenta: 0 0 8px #ff00ff, 0 0 20px #ff00ff40;
+  --glow-green:   0 0 8px #39ff14, 0 0 20px #39ff1440;
+  --glow-orange:  0 0 8px #ff6b00, 0 0 20px #ff6b0040;
+  --glow-amber:   0 0 8px #ff9500, 0 0 20px #ff950040;
+  --glow-accent:  0 0 8px var(--world-accent), 0 0 20px color-mix(in srgb, var(--world-accent) 25%, transparent);
+
+  /* ── CRT Effects ── */
+  --scanline-opacity: 0.07;
+  --scanline-size:    3px;
+  --vignette-opacity: 0.5;
+
+  /* ── Transitions ── */
+  --transition-world:  0.7s;
+  --easing-retro:      cubic-bezier(0.25, 0, 0.5, 1);
+  --transition-fast:   150ms ease;
+  --transition-mid:    300ms ease;
+
+  /* ── Layout ── */
+  --storyline-left: 40px;
+  --section-pad-x:  clamp(1.5rem, 6vw, 8rem);
+  --section-pad-y:  clamp(4rem, 10vh, 8rem);
+  --content-max:    900px;
+}
+
+/* ── World Token Overrides ── */
+[data-active-world="1"] {
+  --world-accent:       var(--color-cyan);
+  --world-secondary:    var(--color-green);
+  --world-cursor-color: var(--color-cyan);
+}
+
+[data-active-world="2"] {
+  --world-accent:       var(--color-magenta);
+  --world-secondary:    var(--color-gold);
+  --world-cursor-color: var(--color-magenta);
+}
+
+[data-active-world="3"] {
+  --world-accent:       var(--color-green);
+  --world-secondary:    var(--color-cyan);
+  --world-cursor-color: var(--color-green);
+}
+
+[data-active-world="4"] {
+  --world-accent:       var(--color-cyan);
+  --world-secondary:    var(--color-white);
+  --world-cursor-color: var(--color-cyan);
+}
+
+[data-active-world="5"] {
+  --world-accent:       var(--color-orange);
+  --world-secondary:    var(--color-amber);
+  --world-cursor-color: var(--color-orange);
+}
+
+[data-active-world="6"] {
+  --world-accent:       var(--color-gold);
+  --world-secondary:    var(--color-white);
+  --world-cursor-color: var(--color-gold);
+}
+
+[data-active-world="7"] {
+  --world-accent:       var(--color-magenta);
+  --world-secondary:    var(--color-white);
+  --world-cursor-color: var(--color-magenta);
+}

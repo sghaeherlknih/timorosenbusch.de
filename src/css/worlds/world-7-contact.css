@@ -1,0 +1,96 @@
+/* ── WELT 7: CONTINUE? Game-Over Screen ── */
+.world--contact {
+  background: #08000f;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 3rem;
+}
+
+.world--contact .world__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Continue countdown */
+.continue-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.continue-screen__heading {
+  letter-spacing: 0.12em;
+}
+
+.continue-screen__count {
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.continue-screen__sub {
+  color: var(--color-white);
+  opacity: 0.6;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+/* Contact buttons (controller style) */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--color-magenta);
+  color: var(--color-magenta);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: box-shadow var(--transition-mid), background-color var(--transition-mid);
+}
+
+.contact-btn:hover,
+.contact-btn:focus-visible {
+  box-shadow: var(--glow-magenta);
+  background: rgba(255, 0, 255, 0.06);
+}
+
+/* Controller key badge (A B X Y) */
+.contact-btn__key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.55rem;
+  flex-shrink: 0;
+}
+
+/* Key colors per button */
+.contact-btn:nth-child(1) .contact-btn__key { color: var(--color-green);   border-color: var(--color-green); }
+.contact-btn:nth-child(2) .contact-btn__key { color: var(--color-orange);  border-color: var(--color-orange); }
+.contact-btn:nth-child(3) .contact-btn__key { color: var(--color-cyan);    border-color: var(--color-cyan); }
+
+.contact-footer {
+  font-size: 0.45rem;
+  letter-spacing: 0.3em;
+  animation: blink 2s step-end infinite;
+}

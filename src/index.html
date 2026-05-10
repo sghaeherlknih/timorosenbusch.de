@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Timo Rosenbusch — Interaktiver digitaler Lebenslauf" />
+  <title>Timo Rosenbusch</title>
+
+  <!-- Fonts: preconnect first -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&display=swap"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&display=swap"
+  />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body data-active-world="1">
+
+  <!-- ══ Custom Cursor ══ -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- ══ CRT Overlay (fixed, pointer-events:none) ══ -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- ══ Storyline — vertical drawing line ══ -->
+  <div class="storyline" aria-hidden="true">
+    <svg
+      class="storyline__svg"
+      viewBox="0 0 20 100"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path id="storyline-path" class="storyline__path" d="M10,0 L10,100" />
+      <!-- Milestone nodes (one per world transition) -->
+      <circle class="storyline__node" data-world="1" cx="10" cy="0"   r="3" />
+      <circle class="storyline__node" data-world="2" cx="10" cy="16"  r="3" />
+      <circle class="storyline__node" data-world="3" cx="10" cy="32"  r="3" />
+      <circle class="storyline__node" data-world="4" cx="10" cy="48"  r="3" />
+      <circle class="storyline__node" data-world="5" cx="10" cy="64"  r="3" />
+      <circle class="storyline__node" data-world="6" cx="10" cy="80"  r="3" />
+      <circle class="storyline__node" data-world="7" cx="10" cy="96"  r="3" />
+    </svg>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       WELT 1 — HERO: Arcade-Cabinet Boot-Sequenz
+  ══════════════════════════════════════════════ -->
+  <section
+    id="world-1"
+    class="world world--hero"
+    data-world="1"
+    aria-label="Intro"
+  >
+    <div class="world__inner">
+      <div class="hero__screen" id="hero-screen">
+        <p class="hero__boot-line label-dim">SYSTEM BOOT v2.4.1</p>
+        <p class="hero__boot-line label-dim">CHECKING MEMORY........... OK</p>
+        <p class="hero__boot-line label-dim">LOADING PERSONALITY........ OK</p>
+        <div class="hero__title-wrap">
+          <h1
+            class="hero__title heading-xl neon-accent glitch"
+            id="hero-title"
+            data-text="TIMO ROSENBUSCH"
+            aria-label="Timo Rosenbusch"
+          ><!-- typed by JS --></h1>
+        </div>
+        <!-- TODO: ECHTE INFO -->
+        <p class="hero__subtitle body-crt" id="hero-subtitle">
+          <span class="neon-accent">[ </span>SYSTEM ENGINEER &amp; AI TOOL DEVELOPER<span class="neon-accent"> ]</span>
+        </p>
+        <p class="hero__tagline body-mono" id="hero-tagline">
+          SYSADMIN BY DAY. TOOL BUILDER BY OBSESSION.
+        </p>
+        <p class="hero__press-start font-pixel" aria-live="polite">PRESS ANY KEY TO CONTINUE</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       WELT 2 — CHARACTER: JRPG Select-Screen
+  ══════════════════════════════════════════════ -->
+  <section
+    id="world-2"
+    class="world world--character"
+    data-world="2"
+    aria-label="Wer bin ich"
+  >
+    <div class="world__inner">
+      <p class="world-label">// SELECT YOUR CHARACTER</p>
+      <div class="character__layout">
+        <div class="character__portrait pixel-border" aria-hidden="true">
+          <!-- ASCII art / pixel portrait placeholder -->
+          <pre class="character__ascii" aria-hidden="true">
+  ╔══════╗
+  ║ ◉  ◉║
+  ║  ▽  ║
+  ║ ───  ║
+  ╚══════╝
+          </pre>
+        </div>
+        <div class="character__info">
+          <h2 class="heading-lg neon-accent">TIMO ROSENBUSCH</h2>
+          <!-- TODO: ECHTE INFO -->
+          <p class="character__class body-crt">CLASS: SYSTEM ENGINEER // AI TOOL DEV</p>
+          <p class="character__bio body-mono">
+            Technisch versierter Nerd aus Darmstadt. Begeistert für Infrastruktur, Open Source und alles was sich automatisieren lässt. Sportlich aktiv beim Krafttraining und Gravel-Radfahren. Teamplayer mit schneller Auffassungsgabe — immer neugierig auf das nächste Rabbit Hole.
+          </p>
+          <div class="character__stats" role="list" aria-label="Charakter-Stats">
+            <!-- TODO: ECHTE ZAHLEN -->
+            <div class="stat-row" role="listitem">
+              <span class="stat-row__label font-pixel">EXP</span>
+              <div class="stat-bar" aria-label="Erfahrung" aria-valuenow="80" aria-valuemax="100">
+                <div class="stat-bar__fill" data-value="80"></div>
+              </div>
+              <span class="stat-row__value body-crt neon-accent">6 YRS</span>
+            </div>
+            <div class="stat-row" role="listitem">
+              <span class="stat-row__label font-pixel">SYS</span>
+              <div class="stat-bar" aria-label="Systems" aria-valuenow="90" aria-valuemax="100">
+                <div class="stat-bar__fill" data-value="90"></div>
+              </div>
+              <span class="stat-row__value body-crt neon-accent">90</span>
+            </div>
+            <div class="stat-row" role="listitem">
+              <span class="stat-row__label font-pixel">DEV</span>
+              <div class="stat-bar" aria-label="Dev" aria-valuenow="75" aria-valuemax="100">
+                <div class="stat-bar__fill" data-value="75"></div>
+              </div>
+              <span class="stat-row__value body-crt neon-accent">75</span>
+            </div>
+            <div class="stat-row" role="listitem">
+              <span class="stat-row__label font-pixel">OPS</span>
+              <div class="stat-bar" aria-label="DevOps" aria-valuenow="85" aria-valuemax="100">
+                <div class="stat-bar__fill" data-value="85"></div>
+              </div>
+              <span class="stat-row__value body-crt neon-accent">85</span>
+            </div>
+          </div>
+          <!-- TODO: ECHTE INFO -->
+          <dl class="character__details body-mono">
+            <div class="character__detail-row">
+              <dt>STANDORT</dt>
+              <dd>DARMSTADT, DE</dd>
+            </div>
+            <div class="character__detail-row">
+              <dt>LEVEL</dt>
+              <dd>26</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       WELT 3 — TIMELINE: Linux Bash / bash history
+  ══════════════════════════════════════════════ -->
+  <section
+    id="world-3"
+    class="world world--timeline"
+    data-world="3"
+    aria-label="Ausbildung und Beruf"
+  >
+    <div class="world__inner">
+      <p class="world-label">// CAREER.LOG</p>
+      <div class="terminal__header" aria-hidden="true">
+        <span>timo@server:~/career$</span>
+        <span class="neon-green"> cat history.log</span>
+      </div>
+      <ol class="timeline" aria-label="Karriere-Timeline">
+        <li class="timeline__station" data-index="0">
+          <div class="station__meta">
+            <span class="station__prompt neon-green" aria-hidden="true">$</span>
+            <span class="station__tag label-dim">MISSION UNLOCKED</span>
+          </div>
+          <div class="station__content pixel-border">
+            <p class="station__period body-crt neon-green">2018 — 2021</p>
+            <h3 class="station__role heading-md neon-accent">IT-SUPPORT-TECHNIKER</h3>
+            <p class="station__company body-mono">Darmstadt Region</p>
+            <p class="station__info body-mono">Erster Einsatz nach dem Fachabi. 3 Jahre Hands-on mit Hardware, Helpdesk, Windows-Umgebungen und dem Verständnis, dass Lösungen schneller kommen als Tickets zumachen.</p>
+          </div>
+        </li>
+        <li class="timeline__station" data-index="1">
+          <div class="station__meta">
+            <span class="station__prompt neon-green" aria-hidden="true">$</span>
+            <span class="station__tag label-dim">MISSION UNLOCKED</span>
+          </div>
+          <div class="station__content pixel-border">
+            <p class="station__period body-crt neon-green">2021 — 2023</p>
+            <h3 class="station__role heading-md neon-accent">FISI AUSBILDUNG</h3>
+            <p class="station__company body-mono">CANCOM GmbH — Frankfurt</p>
+            <p class="station__info body-mono">Ausbildung zum Fachinformatiker Systemintegration. Enterprise-Umgebungen, Netzwerke, Server, Virtualisierung — und gelernt, dass Doku wichtiger ist als man denkt.</p>
+          </div>
+        </li>
+        <li class="timeline__station" data-index="2">
+          <div class="station__meta">
+            <span class="station__prompt neon-green" aria-hidden="true">$</span>
+            <span class="station__tag label-dim">MISSION UNLOCKED</span>
+          </div>
+          <div class="station__content pixel-border">
+            <p class="station__period body-crt neon-green">2023 — 2024</p>
+            <h3 class="station__role heading-md neon-accent">SYSTEM ENGINEER</h3>
+            <p class="station__company body-mono">CANCOM GmbH — Frankfurt</p>
+            <p class="station__info body-mono">Übernahme nach der Ausbildung. Deployment-Projekte, Microsoft 365, Active Directory, VMware — und die Erkenntnis, dass Automatisierung keine Kür sondern Pflicht ist.</p>
+          </div>
+        </li>
+        <li class="timeline__station" data-index="3">
+          <div class="station__meta">
+            <span class="station__prompt neon-green" aria-hidden="true">$</span>
+            <span class="station__tag label-dim" style="color:var(--world-accent)">CURRENT MISSION</span>
+          </div>
+          <div class="station__content pixel-border">
+            <p class="station__period body-crt neon-green">2024 — HEUTE</p>
+            <h3 class="station__role heading-md neon-accent">SYSTEM ADMIN / SYSTEM ENGINEER</h3>
+            <p class="station__company body-mono">HIKO Systems — Darmstadt</p>
+            <p class="station__info body-mono">Infrastructure meets Intelligence. Neben klassischer Sys-Admin-Arbeit entwickle ich KI-gestützte Tools für Kunden — der Einstieg in die nächste Evolution der IT.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       WELT 4 — SKILLS: BIOS / Sci-Fi HUD
+  ══════════════════════════════════════════════ -->
+  <section
+    id="world-4"
+    class="world world--skills"
+    data-world="4"
+    aria-label="Skills und Technologien"
+  >
+    <div class="world__inner">
+      <p class="world-label">// SYSTEM DIAGNOSTICS</p>
+      <div class="hud__frame" aria-hidden="true">
+        <span class="hud__corner hud__corner--tl">┌</span>
+        <span class="hud__corner hud__corner--tr">┐</span>
+        <span class="hud__corner hud__corner--bl">└</span>
+        <span class="hud__corner hud__corner--br">┘</span>
+      </div>
+      <h2 class="heading-lg neon-accent">SKILL ANALYSIS</h2>
+      <div class="skills__grid">
+        <div class="skill-category">
+          <h3 class="skill-category__title heading-md neon-accent">SYSTEMS</h3>
+          <ul class="skill-list" aria-label="Systems Skills">
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Linux</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="5" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="5"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Windows Server</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="4" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="4"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Proxmox / VM</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="4" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="4"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Netzwerk</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="4" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="4"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category__title heading-md neon-accent">DEVOPS</h3>
+          <ul class="skill-list" aria-label="DevOps Skills">
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Docker</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="5" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="5"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Traefik</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="5" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="5"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Git</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="4" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="4"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">CI/CD</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="3" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="3"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category__title heading-md neon-accent">AUTOMATION</h3>
+          <ul class="skill-list" aria-label="Automation Skills">
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Home Assistant</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="5" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="5"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Bash Scripting</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="4" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="4"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Ansible</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="3" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="3"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Pihole / DNS</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="4" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="4"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category__title heading-md neon-accent">DEV</h3>
+          <ul class="skill-list" aria-label="Dev Skills">
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Python</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="4" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="4"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">TypeScript</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="3" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="3"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">LLM / AI APIs</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="4" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="4"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-item__name body-mono">Go</span>
+              <div class="skill-bar" role="progressbar" aria-valuenow="2" aria-valuemax="5">
+                <span class="skill-bar__fill" data-value="2"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- SKILL ACQUIRED popup (managed by JS) -->
+      <div class="skill-popup" id="skill-popup" aria-live="polite" aria-atomic="true">
+        <span class="skill-popup__icon" aria-hidden="true">▶</span>
+        <span class="skill-popup__text font-pixel">SKILL ACQUIRED</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       WELT 5 — HOBBIES: 5 Sub-Plattformen
+  ══════════════════════════════════════════════ -->
+  <section
+    id="world-5"
+    class="world world--hobbies"
+    data-world="5"
+    aria-label="Hobbys und Interessen"
+  >
+    <div class="hobbies-pin-container">
+      <div class="hobbies-track" role="list" aria-label="Hobbys">
+
+        <!-- Hobby 1: Homeserver — Linux Terminal -->
+        <div class="hobby-card hobby-card--homeserver" data-hobby="homeserver" role="listitem">
+          <div class="hobby-card__inner">
+            <div class="terminal-window">
+              <div class="terminal-window__bar" aria-hidden="true">
+                <span>●</span><span>●</span><span>●</span>
+                <span class="terminal-window__title">timo@homeserver:~</span>
+              </div>
+              <div class="terminal-window__body">
+                <p class="terminal-line"><span class="prompt neon-green">$</span> <span class="cmd">neofetch</span></p>
+                <!-- TODO: ECHTE HOMESERVER-DETAILS -->
+                <pre class="terminal-output body-mono">
+OS: Proxmox VE 8.x
+CPU: Intel Core i5
+RAM: 32 GB DDR4
+Services: HA · Immich · Pihole
+          Traefik · Paperless
+          Vaultwarden · Uptime
+                </pre>
+              </div>
+            </div>
+            <h2 class="hobby-card__title heading-md neon-green">HOMESERVER</h2>
+            <p class="hobby-card__desc body-mono">Private Infrastruktur auf Proxmox. Immich ersetzt iCloud, Pihole filtert den DNS, Home Assistant automatisiert alles — alles Open Source, alles selbst gehostet, alles unter eigener Domain mit Traefik + Let's Encrypt.</p>
+          </div>
+        </div>
+
+        <!-- Hobby 2: BTC — Bloomberg Terminal -->
+        <div class="hobby-card hobby-card--btc" data-hobby="btc" role="listitem">
+          <div class="hobby-card__inner">
+            <div class="btc-ticker" aria-label="BTC-Ticker">
+              <p class="btc-ticker__label font-pixel neon-amber">BTC/USD</p>
+              <p class="btc-ticker__price body-crt neon-amber" id="btc-price">-- --,--- $</p>
+              <div class="btc-chart" aria-hidden="true">
+                <span class="btc-chart__bars" id="btc-chart">▁▂▃▄▅▆▇█▇▆▅▄▃▂▁▂▃▄▅▇</span>
+              </div>
+              <p class="btc-ticker__tape body-mono neon-amber" id="btc-tape">
+                BTC ▲ &nbsp; HODL &nbsp; ▶ STACK SATS &nbsp; ▶ NOT YOUR KEYS &nbsp;
+              </p>
+            </div>
+            <h2 class="hobby-card__title heading-md neon-amber">BITCOIN</h2>
+            <p class="hobby-card__desc body-mono">Not your keys, not your coins. Überzeugter Bitcoiner — kein Shitcoin-Casino, keine CEX-Abhängigkeit. Stack Sats, verify don't trust, und verstehen wie dezentrales Geld wirklich funktioniert.</p>
+          </div>
+        </div>
+
+        <!-- Hobby 3: Cycling — Racing HUD -->
+        <div class="hobby-card hobby-card--cycling" data-hobby="cycling" role="listitem">
+          <div class="hobby-card__inner">
+            <div class="cycling-hud" aria-label="Cycling HUD">
+              <div class="cycling-hud__speedo">
+                <svg class="speedo-svg" viewBox="0 0 120 80" aria-hidden="true">
+                  <path class="speedo-track" d="M10,70 A50,50 0 0,1 110,70" />
+                  <path class="speedo-fill" id="speedo-fill" d="M10,70 A50,50 0 0,1 110,70" />
+                  <text class="speedo-value" x="60" y="65" text-anchor="middle" id="speedo-val">0</text>
+                  <text class="speedo-unit" x="60" y="76" text-anchor="middle">km/h</text>
+                </svg>
+              </div>
+              <div class="cycling-hud__stats">
+                <!-- TODO: ECHTE STATS -->
+                <div class="hud-stat"><span class="label-dim">PWR</span><span class="neon-orange" id="cycling-pwr">--- W</span></div>
+                <div class="hud-stat"><span class="label-dim">CAD</span><span class="neon-orange" id="cycling-cad">--- rpm</span></div>
+                <div class="hud-stat"><span class="label-dim">DST</span><span class="neon-orange" id="cycling-dst">---- km</span></div>
+              </div>
+            </div>
+            <h2 class="hobby-card__title heading-md neon-orange">CYCLING</h2>
+            <p class="hobby-card__desc body-mono">Gravel-Bike mit 45mm Reifen, Ziel: 30er Pace halten. Langen Ausdauereinheiten kombiniert mit Krafttraining — Shredded werden und Klimmzüge dominieren. Der Körper ist auch ein System das optimiert werden will.</p>
+          </div>
+        </div>
+
+        <!-- Hobby 4: Gaming — Arcade Cabinet -->
+        <div class="hobby-card hobby-card--gaming" data-hobby="gaming" role="listitem">
+          <div class="hobby-card__inner">
+            <div class="arcade-display" aria-hidden="true">
+              <p class="arcade-display__score font-pixel neon-cyan">HI-SCORE</p>
+              <p class="arcade-display__value font-pixel neon-cyan" id="arcade-score">000000</p>
+              <p class="arcade-display__insert font-pixel" id="arcade-insert">INSERT COIN</p>
+            </div>
+            <h2 class="hobby-card__title heading-md neon-cyan">GAMING</h2>
+            <p class="hobby-card__desc body-mono">Nerd-Wurzeln nie vergessen. Von Retro-Klassikern bis aktuellen Titeln — Gaming hat mein technisches Denken geprägt. Probleme lösen, Systeme verstehen, Spielmechaniken analysieren. Klingt nach Alltag im Job.</p>
+          </div>
+        </div>
+
+        <!-- Hobby 5: Grillen — BBQ Diner -->
+        <div class="hobby-card hobby-card--grillen" data-hobby="grillen" role="listitem">
+          <div class="hobby-card__inner">
+            <canvas class="fire-canvas" id="fire-canvas" aria-hidden="true" width="200" height="100"></canvas>
+            <div class="bbq-menu pixel-border">
+              <p class="bbq-menu__title font-pixel neon-orange">MENU DU JOUR</p>
+              <p class="bbq-menu__item body-crt">★ RIBS — WELL DONE</p>
+              <p class="bbq-menu__item body-crt">★ PULLED PORK — SMOKED</p>
+              <p class="bbq-menu__item body-crt">★ BRISKET — LOW &amp; SLOW</p>
+            </div>
+            <h2 class="hobby-card__title heading-md neon-orange">GRILLEN</h2>
+            <p class="hobby-card__desc body-mono">Feuer, Rauch, Geduld. Low &amp; Slow BBQ ist wie ein langer Deploy — vorbereiten, warten, perfektes Ergebnis. Pulled Pork nach 14h, Ribs nach der 3-2-1-Methode. Kein Gas, nur Holzkohle.</p>
+          </div>
+        </div>
+
+      </div><!-- /.hobbies-track -->
+    </div><!-- /.hobbies-pin-container -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       WELT 6 — PROJEKTE: Achievement-Screen
+  ══════════════════════════════════════════════ -->
+  <section
+    id="world-6"
+    class="world world--projects"
+    data-world="6"
+    aria-label="Projekte"
+  >
+    <div class="world__inner">
+      <p class="world-label">// COMPLETED MISSIONS</p>
+      <h2 class="heading-lg neon-accent">ACHIEVEMENT UNLOCKED</h2>
+      <div class="projects-grid">
+        <article class="project-card pixel-border" data-index="0">
+          <div class="project-card__unlock label-dim" aria-hidden="true">▶ ACHIEVEMENT UNLOCKED</div>
+          <h3 class="project-card__title heading-md neon-accent">HOMELAB STACK</h3>
+          <p class="project-card__desc body-mono">Private Cloud auf Proxmox: Immich, Home Assistant, Pihole, Vaultwarden, Paperless — alles selbst gehostet, alles über eigene Domain mit Traefik + Let's Encrypt erreichbar. Zero-Cost, Full-Control.</p>
+          <div class="project-card__tech" aria-label="Tech Stack">
+            <span class="tech-chip body-mono">Proxmox</span>
+            <span class="tech-chip body-mono">Docker</span>
+            <span class="tech-chip body-mono">Traefik</span>
+            <span class="tech-chip body-mono">Home Assistant</span>
+          </div>
+          <a class="project-card__link magnetic-btn" href="#" aria-label="Coming soon" aria-disabled="true" style="opacity:0.45;pointer-events:none;cursor:not-allowed">
+            <span class="font-pixel">COMING SOON</span>
+          </a>
+        </article>
+        <article class="project-card pixel-border" data-index="1">
+          <div class="project-card__unlock label-dim" aria-hidden="true">▶ ACHIEVEMENT UNLOCKED</div>
+          <h3 class="project-card__title heading-md neon-accent">AI CUSTOMER TOOLS</h3>
+          <p class="project-card__desc body-mono">KI-gestützte Produktivitäts-Tools für Unternehmenskunden. Vom Konzept bis zur Deploymentstrategie — nützliche Helfer die echten Zeitaufwand eliminieren und Workflows modernisieren.</p>
+          <div class="project-card__tech" aria-label="Tech Stack">
+            <span class="tech-chip body-mono">Python</span>
+            <span class="tech-chip body-mono">TypeScript</span>
+            <span class="tech-chip body-mono">LLM APIs</span>
+            <span class="tech-chip body-mono">Docker</span>
+          </div>
+          <a class="project-card__link magnetic-btn" href="mailto:t.rosenbusch@hiko-systems.de" aria-label="Kontakt aufnehmen">
+            <span class="font-pixel">GET IN TOUCH</span>
+          </a>
+        </article>
+        <article class="project-card pixel-border" data-index="2">
+          <div class="project-card__unlock label-dim" aria-hidden="true">▶ ACHIEVEMENT UNLOCKED</div>
+          <h3 class="project-card__title heading-md neon-accent">TIMOROSENBUSCH.DE</h3>
+          <p class="project-card__desc body-mono">Diese Seite — gebaut mit Vanilla HTML/CSS/JS, GSAP ScrollTrigger, Lenis Smooth Scroll und echtem Pixel-Art-Herzblut. Kein Framework, kein Build-Step, 7 Welten, 1 Story.</p>
+          <div class="project-card__tech" aria-label="Tech Stack">
+            <span class="tech-chip body-mono">HTML/CSS/JS</span>
+            <span class="tech-chip body-mono">GSAP</span>
+            <span class="tech-chip body-mono">Lenis</span>
+            <span class="tech-chip body-mono">nginx</span>
+          </div>
+          <a class="project-card__link magnetic-btn" href="#" aria-label="Coming soon" aria-disabled="true" style="opacity:0.45;pointer-events:none;cursor:not-allowed">
+            <span class="font-pixel">COMING SOON</span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       WELT 7 — KONTAKT: CONTINUE? Countdown
+  ══════════════════════════════════════════════ -->
+  <section
+    id="world-7"
+    class="world world--contact"
+    data-world="7"
+    aria-label="Kontakt"
+  >
+    <div class="world__inner">
+      <div class="continue-screen" aria-live="polite">
+        <h2 class="continue-screen__heading heading-lg neon-magenta" id="continue-heading">CONTINUE?</h2>
+        <p class="continue-screen__count font-pixel neon-accent" id="continue-count" aria-label="Countdown">9</p>
+        <p class="continue-screen__sub body-crt">LASS UNS REDEN. DIE ZEIT LÄUFT.</p>
+      </div>
+      <div class="contact-links" role="list" aria-label="Kontakt-Links">
+        <!-- TODO: ECHTE KONTAKTDATEN -->
+        <a
+          class="contact-btn magnetic-btn"
+          href="mailto:t.rosenbusch@hiko-systems.de"
+          role="listitem"
+          aria-label="E-Mail senden"
+        >
+          <span class="contact-btn__key font-pixel" aria-hidden="true">A</span>
+          <span class="contact-btn__label body-mono">E-MAIL</span>
+        </a>
+        <a
+          class="contact-btn magnetic-btn"
+          href="https://github.com/sghaeherlknih"
+          target="_blank"
+          rel="noopener noreferrer"
+          role="listitem"
+          aria-label="GitHub-Profil öffnen"
+        >
+          <span class="contact-btn__key font-pixel" aria-hidden="true">B</span>
+          <span class="contact-btn__label body-mono">GITHUB</span>
+        </a>
+        <a
+          class="contact-btn magnetic-btn"
+          href="https://www.linkedin.com/in/timo-rosenbusch-5a4584243/"
+          target="_blank"
+          rel="noopener noreferrer"
+          role="listitem"
+          aria-label="LinkedIn-Profil öffnen"
+        >
+          <span class="contact-btn__key font-pixel" aria-hidden="true">X</span>
+          <span class="contact-btn__label body-mono">LINKEDIN</span>
+        </a>
+      </div>
+      <p class="contact-footer font-pixel label-dim" aria-hidden="true">── INSERT COIN ──</p>
+    </div>
+  </section>
+
+  <!-- ══ GSAP + Lenis (self-hosted) ══ -->
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+
+  <!-- ══ App Entry Point ══ -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

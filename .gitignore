@@ -1,0 +1,32 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+.next
+
+# Environment files (secrets)
+.env
+.env.*
+!.env.example
+!.example.env
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+
+# Database
+*.db
+
+# IDE / tooling
+.claude
+.vscode
+
+# Auth
+.authfiles
+
+# Legacy Vite app (migrated to Next.js)
+old/
+.demo_files
+old_version

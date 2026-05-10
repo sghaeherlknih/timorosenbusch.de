@@ -1,0 +1,278 @@
+/* ── WELT 5: Hobbies (Horizontal Scroll) ── */
+.world--hobbies {
+  padding: 0;
+  min-height: 100svh;
+  background: var(--bg-base);
+}
+
+.hobbies-pin-container {
+  overflow: hidden;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+.hobbies-track {
+  display: flex;
+  gap: 0;
+  will-change: transform;
+}
+
+/* ── Hobby Card Base ── */
+.hobby-card {
+  flex-shrink: 0;
+  width: 100vw;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem clamp(2rem, 8vw, 6rem);
+}
+
+.hobby-card__inner {
+  max-width: 560px;
+  width: 100%;
+}
+
+.hobby-card__title {
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.hobby-card__desc {
+  color: var(--color-white);
+  opacity: 0.8;
+  line-height: 1.7;
+}
+
+/* ── Homeserver: Linux Terminal ── */
+.hobby-card--homeserver {
+  background: #0d1a0d;
+}
+
+.terminal-window {
+  border: 1px solid rgba(57, 255, 20, 0.4);
+  font-family: 'Share Tech Mono', monospace;
+  margin-bottom: 1.5rem;
+  background: #0a110a;
+}
+
+.terminal-window__bar {
+  background: rgba(57, 255, 20, 0.1);
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+}
+
+.terminal-window__bar span:not(.terminal-window__title) {
+  color: rgba(57, 255, 20, 0.5);
+}
+
+.terminal-window__title {
+  margin-left: auto;
+  color: var(--color-green);
+  font-size: 0.7rem;
+  margin-right: auto;
+}
+
+.terminal-window__body { padding: 0.8rem 1rem; }
+
+.terminal-line {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.prompt { margin-right: 0.5rem; }
+.cmd    { color: var(--color-white); }
+
+.terminal-output {
+  font-size: 0.8rem;
+  color: rgba(57, 255, 20, 0.7);
+  white-space: pre;
+  line-height: 1.6;
+}
+
+/* ── BTC: Bloomberg Terminal ── */
+.hobby-card--btc {
+  background: #0f0a00;
+}
+
+.btc-ticker {
+  border: 1px solid rgba(255, 149, 0, 0.4);
+  padding: 1rem 1.2rem;
+  background: #0a0800;
+  margin-bottom: 1.5rem;
+}
+
+.btc-ticker__label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.3rem;
+}
+
+.btc-ticker__price {
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+
+.btc-chart {
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.btc-chart__bars {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--color-amber);
+  letter-spacing: 2px;
+  display: inline-block;
+  /* JS scrolls this via translateX */
+}
+
+.btc-ticker__tape {
+  font-size: 0.8rem;
+  color: rgba(255, 149, 0, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  /* JS animates scroll */
+}
+
+/* ── Cycling: Racing HUD ── */
+.hobby-card--cycling {
+  background: #0a0500;
+}
+
+.cycling-hud {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 107, 0, 0.4);
+  padding: 1rem 1.2rem;
+  background: rgba(255, 107, 0, 0.03);
+}
+
+.cycling-hud__speedo { flex-shrink: 0; }
+
+.speedo-svg {
+  width: 120px;
+  height: 80px;
+}
+
+.speedo-track {
+  fill: none;
+  stroke: rgba(255, 107, 0, 0.2);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.speedo-fill {
+  fill: none;
+  stroke: var(--color-orange);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+  filter: drop-shadow(0 0 4px var(--color-orange));
+}
+
+.speedo-value {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+  fill: var(--color-orange);
+}
+
+.speedo-unit {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  fill: rgba(255, 107, 0, 0.6);
+}
+
+.cycling-hud__stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hud-stat {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+}
+
+.hud-stat .label-dim { min-width: 3rem; }
+
+/* ── Gaming: Arcade Cabinet ── */
+.hobby-card--gaming {
+  background: #000814;
+}
+
+.arcade-display {
+  border: 2px solid var(--color-cyan);
+  box-shadow: var(--glow-cyan), inset 0 0 40px rgba(0, 255, 255, 0.05);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.arcade-display__score {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.3rem;
+}
+
+.arcade-display__value {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.arcade-display__insert {
+  font-size: 0.6rem;
+  color: var(--color-white);
+  letter-spacing: 0.2em;
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Grillen: BBQ Diner ── */
+.hobby-card--grillen {
+  background: #100500;
+}
+
+.fire-canvas {
+  display: block;
+  margin-bottom: 1rem;
+  image-rendering: pixelated;
+}
+
+.bbq-menu {
+  padding: 1rem 1.2rem;
+  border-color: var(--color-orange);
+  box-shadow: var(--glow-orange);
+  margin-bottom: 1.5rem;
+  background: rgba(255, 107, 0, 0.04);
+}
+
+.bbq-menu__title {
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.bbq-menu__item {
+  font-size: 1.3rem;
+  color: var(--color-white);
+  margin-bottom: 0.3rem;
+}
+
+/* ── Mobile: stack vertically ── */
+@media (max-width: 768px) {
+  .hobbies-pin-container { overflow: visible; }
+  .hobbies-track         { flex-direction: column; transform: none !important; }
+  .hobby-card            { width: 100%; min-height: auto; padding: 3rem 1.5rem; }
+}
